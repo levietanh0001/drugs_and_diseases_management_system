@@ -44,6 +44,13 @@ def destroy(request, drug_id):
     drug = get_object_or_404(Drug, drug_id=drug_id)
     drug.delete()
     return redirect("/")
+def edit(request, drug_id):  
+    drug = get_object_or_404(Drug, drug_id=drug_id)
+    forms = DrugForm()
+    context = {
+        'form': forms
+    }
+    return render(request, 'drugs/edit_drug.html', context)
 # @require_POST
 # def destroy(request, drug_id):
 #     d = get_object_or_404(Drug, drug_id=drug_id)
