@@ -23,45 +23,45 @@ class DrugForm(forms.Form):
     drug_type = forms.ChoiceField(widget=forms.Select(attrs={
         'class': 'form-control',
         'id': 'drug_type',
-        'data-val': 'true',
-        'data-val-required': 'Please enter drug type',
+        # 'data-val': 'true',
+        # 'data-val-required': 'Please enter drug type',
     }), choices=drug_types_list)
     amount = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control',
         'id': 'amount',
-        'data-val': 'true',
-        'data-val-required': 'Please enter amount',
-    }))
+        # 'data-val': 'true',
+        # 'data-val-required': 'Please enter amount',
+    }), required=False)
     exp = forms.CharField(widget=forms.DateInput(attrs={
         'class': 'form-control',
         'type': 'date',
         'id': 'exp',
-        'data-val': 'true',
-        'data-val-required': 'Please enter expiry date',
-    }))
+        # 'data-val': 'true',
+        # 'data-val-required': 'Please enter expiry date',
+    }), required=False)
     mfg = forms.CharField(widget=forms.DateInput(attrs={
         'class': 'form-control',
         'type': 'date',
         'id': 'exp',
-        'data-val': 'true',
-        'data-val-required': 'Please enter manufacture date',
-    }))
+        # 'data-val': 'true',
+        # 'data-val-required': 'Please enter manufacture date',
+    }), required=False)
     brand = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control',
         'id': 'brand',
-        'data-val': 'true',
-        'data-val-required': 'Please enter brand',
-    }))
+        # 'data-val': 'true',
+        # 'data-val-required': 'Please enter brand',
+    }), required=False)
     description = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control',
         'id': 'description',
-        'data-val': 'true',
-        'data-val-required': 'Please enter description',
-    }))
+        # 'data-val': 'true',
+        # 'data-val-required': 'Please enter description',
+    }), required=False)
     updated_date = forms.CharField(widget=forms.DateInput(attrs={
         'class': 'form-control',
         'type': 'date',
         'id': 'update_date',
-        'data-val': 'true',
-        'data-val-required': 'Please enter updated date',
-    }))
+        # 'data-val': 'true',
+        # 'data-val-required': 'Please enter updated date',
+    }), required=False)
