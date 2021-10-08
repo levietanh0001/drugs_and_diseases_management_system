@@ -1,7 +1,7 @@
 # drugs-and-diseases-management
 This is a drug-and-disease catalog management system
 
-# **UPDATED**
+**UPDATED**
 Currently working on branch 'main'
 # How to Setup
 1. Clone Project
