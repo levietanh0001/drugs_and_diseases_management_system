@@ -7,6 +7,7 @@ from django.contrib import messages
 from django.http import HttpResponse, JsonResponse, QueryDict
 from django.views import View
 
+from datetime import datetime
 from .models import (
     Drug,
 )
@@ -29,10 +30,9 @@ def add_drug(request):
             mfg = forms.cleaned_data['mfg']
             brand = forms.cleaned_data['brand']
             description = forms.cleaned_data['description']
-            updated_date = forms.cleaned_data['updated_date']
+            # updated_date = forms.cleaned_data['updated_date']
             Drug.objects.create(drug_id=drug_id, name=name, 
-                                drug_type=drug_type, amount=amount, exp=exp, mfg=mfg, brand=brand, description=description, updated_date=updated_date
-                                )
+                drug_type=drug_type, amount=amount, exp=exp, mfg=mfg, brand=brand, description=description)
             return redirect('drug-list')
     context = {
         'form': forms
@@ -46,23 +46,40 @@ def destroy(request, drug_id):
     return redirect("/")
 def edit(request, drug_id):  
     drug = get_object_or_404(Drug, drug_id=drug_id)
-    forms = DrugForm()
+    # forms = DrugForm()
     context = {
-        'form': forms
+        'drug': drug
     }
     return render(request, 'drugs/edit_drug.html', context)
-# @require_POST
-# def destroy(request, drug_id):
-#     d = get_object_or_404(Drug, drug_id=drug_id)
-#     d.delete()
-#     return redirect('/')
-# def destroy(request, drug_id):  
-#     Drug.objects.get(drug_id=drug_id).delete()
-#     return redirect("/")
-# def destroy(request, drug_id):  
-#     d = Drug.objects.get(drug_id=drug_id)  
-#     d.delete()  
-#     return redirect("/")     
+def update(request, drug_id):  
+    # drug = Drug.objects.get(drug_id=drug_id)  
+    # form = DrugForm(request.POST)  
+    drug = get_object_or_404(Drug, drug_id=drug_id)
+    form = DrugForm(request.POST, instance = drug)  
+    # form = DrugForm(drug[0])
+    if form.is_valid():  
+        form.save()
+        return redirect("drug-list") 
+    return render(request, 'drugs/edit_drug.html', {'drug': drug}) 
+    # drug_id = drug.drug_id
+    # name = drug.name
+    # drug_type = drug.drug_type
+    # amount = drug.amount
+    # exp = drug.exp
+    # mfg = drug.mfg
+    # brand = drug.brand
+    # description = drug.description
+    # updated_date = drug.updated_date
+    # if exp == '':
+    #     exp = None
+    # if mfg == '':
+    #     mfg = None
+    # if updated_date == '':
+    #     updated_date = None
+    # Drug.objects.filter(drug_id=drug_id).update(drug_id=drug_id, name=name, 
+    #     drug_type=drug_type, amount=amount, exp=exp, mfg=mfg, brand=brand, description=description, updated_date=updated_date)
+         
+    
 
 
 class DrugListView(ListView):
