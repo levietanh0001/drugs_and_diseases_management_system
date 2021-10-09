@@ -1,4 +1,4 @@
-# drugs-and-diseases-management
+# drugs-and-diseases-management-ddms
 This is a drug-and-disease catalog management system
 
 # **Update!**
