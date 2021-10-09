@@ -11,7 +11,11 @@
                 <div class="card-body--">
                     <form method="POST" action="/delete_selected/">
                         {% csrf_token %}
-                        <button type="submit" id="delsel" class="btn btn-danger">Delete Selected</button><br><br>
+                        <button type="submit" id="delsel" class="btn btn-danger">Delete Selected</button>
+                        <a href="{% url 'add-drug' %}" id="add-drug-btn" class="btn btn-success">                            
+                            <span class="fas fa-plus"> Add Drug</span>
+                        </a>
+                        <br><br>
                         <div class="table-stats order-table ov-h">
                             <table id="bootstrapdatatable" class="table table-striped">
                                 <thead>
