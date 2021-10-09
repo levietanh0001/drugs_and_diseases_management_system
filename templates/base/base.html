@@ -16,6 +16,11 @@
     {% endcomment %}
 </head>
 <style>
+table.dataTable thead .sorting, 
+table.dataTable thead .sorting_asc, 
+table.dataTable thead .sorting_desc {
+    background : none !important;
+}
 .dataTables_wrapper .dataTables_filter {
     float: right;
     text-align: right;
@@ -160,7 +165,18 @@ i.icon-search {
                 "pagingType": "full_numbers"
             });
         });
-        
+        function viewdata(){
+            $.ajax({
+                url: '../drugs/drug_list.html',
+                type: 'GET',
+                success: function(data){
+                    $('tbody').html(data)
+                }
+            })
+        }
+        $('#checkall').change(function(){
+            $('.checkitem').prop("checked", $(this).prop("checked"))
+        })
     </script>
 </body>
 </html>
