@@ -40,6 +40,13 @@ def add_drug(request):
     return render(request, 'drugs/add_drug.html', context)    
 
 
+
+def delete_selected(request):
+    if request.method == 'POST':
+        id_list = request.POST.getlist('instance')
+        for i in id_list:
+            Drug.objects.get(drug_id=i).delete()
+            return redirect("drug-list")
 def destroy(request, drug_id):  
     drug = get_object_or_404(Drug, drug_id=drug_id)
     drug.delete()

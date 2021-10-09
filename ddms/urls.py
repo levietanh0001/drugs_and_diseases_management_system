@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path, include
 # local
 from .views import base, dashboard
-from drugs.views import destroy, edit, update, DrugListView
+from drugs.views import destroy, edit, update, delete_selected, DrugListView
 
 
 urlpatterns = [
@@ -13,4 +13,5 @@ urlpatterns = [
     path('update/<drug_id>/', update), 
     path('edit/<drug_id>/', edit), 
     path('delete/<drug_id>/', destroy), 
+    path('delete_selected/', delete_selected), 
 ]
