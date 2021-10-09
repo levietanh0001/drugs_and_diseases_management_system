@@ -87,12 +87,14 @@ def update(request, drug_id):
     #     drug_type=drug_type, amount=amount, exp=exp, mfg=mfg, brand=brand, description=description, updated_date=updated_date)
          
     
-
-
 class DrugListView(ListView):
     model = Drug
     template_name = 'drugs/drug_list.html'
     context_object_name = 'drug'
+# class DashBoardListView(ListView):
+#     # model = Drug
+#     template_name = '/dashboard.html'
+    # context_object_name = 'drug'    
     # def delete(self, request, pk, action=None):
     #     drug_data = self.get_object(pk)
     #     drug_data.delete()

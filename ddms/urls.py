@@ -8,6 +8,7 @@ from drugs.views import destroy, edit, update, delete_selected, DrugListView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', dashboard, name='dashboard'),
+    # path('', DashBoardListView.as_view(), name='dashboard'),
     path('drug-list/', DrugListView.as_view(), name='drug-list'),
     path('drugs/', include('drugs.urls')),
     path('update/<drug_id>/', update), 

@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 
+from drugs.views import Drug
 
 # @login_required(login_url='login')
 def dashboard(request):
@@ -9,7 +10,9 @@ def dashboard(request):
     # total_buyer = Buyer.objects.count()
     # total_oder = Order.objects.count()
     # orders = Order.objects.all().order_by('-id')
+    drug_count = Drug.objects.all().count()
     context = {
+        'drug_count': drug_count
         # 'product': total_product,
         # 'supplier': total_supplier,
         # 'buyer': total_buyer,
